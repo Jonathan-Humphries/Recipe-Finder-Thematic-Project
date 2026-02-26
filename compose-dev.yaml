@@ -1,0 +1,34 @@
+services:
+  calorie_api:
+    build: backend
+    container_name: recipe_tracker_api
+    ports:
+      - "8100:8100"
+    depends_on:
+      calorie_db:
+        condition: service_healthy
+  calorie_frontend:
+    build: frontend
+    container_name: recipe_tracker_frontend
+    ports:
+      - "80:80"
+  calorie_db:
+    build: db
+    container_name: recipe_tracker_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: recipe_trackerdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+      timeout: 10s
+
+volumes:
+  data:
