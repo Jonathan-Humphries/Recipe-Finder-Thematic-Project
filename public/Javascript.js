@@ -72,3 +72,17 @@ function setUserIngredients() {
     availableIngredients = [...availableIngredients, ...newItems];
     alert("Inventory updated manually!");
 }
+
+//saving the recipe
+async function saveRecipe(newRecipe) {
+    try {
+        const response = await fetch('/api/recipes/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newRecipe)
+        });
+        if (response.ok) alert("Recipe saved to server!");
+    } catch (error) {
+        console.error("Error saving recipe:", error);
+    }
+}
