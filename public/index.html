@@ -1,12 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Finder</title>
-</head>
-<body>
-    <h1>welcome to the recipe finder </h1>
-    
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Recipe Finder</title>
+
+        <style>
+            /* Temp CSS to check layout works */
+
+            body {
+                width: 100vw;
+                height: 100vh;
+
+                overflow: hidden;
+
+                margin: 0;
+                padding: 0;
+            }
+
+            header {
+                width: 100%;
+                height: 5%;
+
+                overflow: hidden;
+
+                margin: 0;
+                padding: 0;
+
+                background-color: red;
+            }
+
+            header h1 {
+                margin: 0;
+                padding: 0;
+            }
+
+            #page {
+                width: 100%;
+                height: 95%;
+
+                overflow: hidden;
+
+                margin: 0;
+                padding: 0;
+
+                display: flex;
+                flex-direction: row;
+            }
+
+            #sidebar {
+                /* width: 5vh; */
+                width: 25vw;
+                height: 100%;
+
+                overflow: hidden;
+
+                background-color: lightpink;
+            }
+
+            #toggle-sidebar {
+                width: 5vh;
+                height: 2vh;
+
+                position:absolute;
+
+                left: 25vw;
+                top: 7vh;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Recipe Finder</h1>
+        </header>
+        <div id="page">
+            <div id="sidebar">
+                <h2 class="label">Recipe name</h2>
+                <input type="search" name="nameSearch" id="name-search">
+
+                <hr>
+
+                <h2 class="label">Tags</h2>
+                <div id="tag-select"></div>
+
+                <hr>
+
+                <h2 class="label">Ingredients</h2>
+                <div id="ingredient-select"></div>
+
+                <hr>
+
+                <button type="submit" name="recipeSearch" id="recipe-search">Search</button>
+                <button type="button" name="toggleSidebar" id="toggle-sidebar"></button>
+            </div>
+            <div id="content">
+                <h1>Recipes</h1>
+
+                <hr>
+
+                <div id="recipe-deposit">
+                    <div id="recipe-card-example" class="recipe-card">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
