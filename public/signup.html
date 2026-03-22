@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — Recipe Finders</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a href="index.html" class="auth-logo">
+    <span class="logo-dot"></span>
+    Recipe Finders
+  </a>
+
+  <div class="auth-page">
+    <div class="auth-card">
+
+      <a href="index.html" class="auth-back-link">← Back to recipes</a>
+
+      <h1 class="auth-form-title">Create your account</h1>
+      <p class="auth-form-subtitle">Already have an account? <a href="login.html">Sign in</a></p>
+
+      <form action="#" method="post">
+
+        <div class="form-group">
+          <label class="form-label" for="name">Your name</label>
+          <div class="form-input-wrap">
+            <input type="text" id="name" class="form-input" placeholder="Jamie Oliver" autocomplete="name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email address</label>
+          <div class="form-input-wrap">
+            <input type="email" id="email" class="form-input" placeholder="you@example.com" autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="form-input-wrap">
+            <input type="password" id="password" class="form-input" placeholder="Create a strong password" autocomplete="new-password">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirm">Confirm password</label>
+          <div class="form-input-wrap">
+            <input type="password" id="confirm" class="form-input" placeholder="Repeat your password" autocomplete="new-password">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-auth-submit">Create my account →</button>
+
+      </form>
+
+      <p class="terms-note">By creating an account you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+
+    </div>
+  </div>
+
+</body>
+</html>

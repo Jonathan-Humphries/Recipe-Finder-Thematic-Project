@@ -1,11 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Finder</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Finders — Cook What You Have</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>welcome to the recipe finder </h1>
+<body class="has-sidebar">
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-leaf"></span>
+        Recipe Finders
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Discover</a></li>
+        <li><a href="account.html#saved">Saved Recipes</a></li>
+        <li><a href="account.html">My Account</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn-nav-login">Sign in</a>
+        <a href="signup.html" class="btn-nav-signup">Get started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE BODY: sidebar + main -->
+  <div class="page-body">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="search-sidebar">
+      <div class="search-sidebar-inner">
+
+        <h2 class="search-panel-title">What's in your kitchen?</h2>
+        <p class="search-panel-subtitle">Type an ingredient and press Enter, or pick from suggestions below</p>
+
+        <div class="selected-count" style="margin:1rem 0 1.25rem;">
+          <div class="count-bubble">0</div>
+          <span>ingredients selected</span>
+        </div>
+
+        <div class="ingredient-input-wrap">
+          <input type="text" id="ingredient-input" placeholder="e.g. garlic, eggs…" autocomplete="off">
+          <span class="input-search-icon">🔍</span>
+        </div>
+
+        <div class="selected-ingredients"></div>
+
+        <div class="quick-suggest">
+          <span class="quick-suggest-label">Quick add</span>
+          <div class="quick-tag-group">
+            <button class="quick-tag">Eggs</button>
+            <button class="quick-tag">Garlic</button>
+            <button class="quick-tag">Tomatoes</button>
+            <button class="quick-tag">Pasta</button>
+            <button class="quick-tag">Chicken</button>
+            <button class="quick-tag">Rice</button>
+            <button class="quick-tag">Onion</button>
+            <button class="quick-tag">Avocado</button>
+          </div>
+        </div>
+
+        <div class="sidebar-filters">
+          <span class="filter-label">Dietary</span>
+          <div class="sidebar-filter-chips">
+            <button class="filter-chip">Vegetarian</button>
+            <button class="filter-chip">Vegan</button>
+            <button class="filter-chip">Gluten-free</button>
+            <button class="filter-chip">Dairy-free</button>
+          </div>
+        </div>
+
+        <button class="btn-find-recipes" style="width:100%;justify-content:center;margin-top:auto;">
+          <span>Find recipes</span><span>→</span>
+        </button>
+
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      <!-- HERO -->
+      <header class="hero">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <h1 class="hero-title">Cook with what<br>you <em>already have</em></h1>
+            <p class="hero-subtitle">Tell us what's in your fridge and larder — we'll find recipes that use exactly those ingredients, with no wasteful extras.</p>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-card-stack">
+              <div class="hero-mini-card">
+                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=70" alt="Curry">
+                <span class="hero-mini-card-label">Chickpea curry</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- RESULTS -->
+      <section class="results-section">
+        <div class="results-inner">
+          <div class="results-header">
+            <h2 class="results-title">All Recipes</h2>
+            <span class="results-count">5 recipes</span>
+          </div>
+
+          <div class="recipe-grid" id="recipe-display">
+
+            <!-- Recipe 1 -->
+            <article class="recipe-card">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80" alt="Spaghetti">
+                <span class="card-badge">Easy</span>
+                <button class="btn-save-card">🤍</button>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="meta-item"><span class="icon"></span><u><b>20 min</b></u></span>
+                  <span class="meta-item"><span class="icon"></span><u><b>Serves 2</b></u></span>
+                </div>
+                <h3 class="card-title">Spaghetti Aglio e Olio</h3>
+                <p class="card-desc">A classic Italian pasta dish made with garlic, olive oil, and chilli flakes — simple, bold, and endlessly satisfying.</p>
+                <div class="card-tags">
+                  <span class="card-tag">pasta</span>
+                  <span class="card-tag">italian</span>
+                  <span class="card-tag dietary">vegetarian</span>
+                  <span class="card-tag dietary">vegan</span>
+                </div>
+              </div>
+              <div class="card-footer">
+                <a href="recipe.html" class="btn-view-recipe">View →</a>
+              </div>
+            </article>
+
+            <!-- Recipe 2 -->
+            <article class="recipe-card">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=600&q=80" alt="Shakshuka">
+                <span class="card-badge">Easy</span>
+                <button class="btn-save-card">🤍</button>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="meta-item"><span class="icon"></span><u><b>20 min</b></u></span>
+                  <span class="meta-item"><span class="icon"></span><u><b>Serves 2</b></u></span>
+                </div>
+                <h3 class="card-title">Shakshuka</h3>
+                <p class="card-desc">Eggs poached in a rich, spiced tomato and pepper sauce. A one-pan wonder for breakfast, lunch, or dinner.</p>
+                <div class="card-tags">
+                  <span class="card-tag">eggs</span>
+                  <span class="card-tag">breakfast</span>
+                  <span class="card-tag dietary">vegetarian</span>
+                  <span class="card-tag dietary">gluten-free</span>
+                </div>
+              </div>
+              <div class="card-footer">
+                <a href="recipe.html" class="btn-view-recipe">View →</a>
+              </div>
+            </article>
+
+            <!-- Recipe 3 -->
+            <article class="recipe-card">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80" alt="Chicken Fried Rice">
+                <span class="card-badge">Easy</span>
+                <button class="btn-save-card">🤍</button>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="meta-item"><span class="icon"></span><u><b>20 min</b></u></span>
+                  <span class="meta-item"><span class="icon"></span><u><b>Serves 2</b></u></span>
+                </div>
+                <h3 class="card-title">Chicken Fried Rice</h3>
+                <p class="card-desc">The perfect use for leftover rice — tossed with chicken, vegetables, and savoury soy sauce in a blazing hot wok.</p>
+                <div class="card-tags">
+                  <span class="card-tag">rice</span>
+                  <span class="card-tag">asian</span>
+                  <span class="card-tag dietary">dairy-free</span>
+                </div>
+              </div>
+              <div class="card-footer">
+                <a href="recipe.html" class="btn-view-recipe">View →</a>
+              </div>
+            </article>
+
+            <!-- Recipe 4 -->
+            <article class="recipe-card">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80" alt="Tomato Soup">
+                <span class="card-badge">Easy</span>
+                <button class="btn-save-card">🤍</button>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="meta-item"><span class="icon"></span><u><b>20 min</b></u></span>
+                  <span class="meta-item"><span class="icon"></span><u><b>Serves 2</b></u></span>
+                </div>
+                <h3 class="card-title">Creamy Tomato Soup</h3>
+                <p class="card-desc">Velvety, rich tomato soup with a touch of cream and fresh basil. Better than anything from a tin.</p>
+                <div class="card-tags">
+                  <span class="card-tag">soup</span>
+                  <span class="card-tag">comfort</span>
+                  <span class="card-tag dietary">vegetarian</span>
+                  <span class="card-tag dietary">gluten-free</span>
+                </div>
+              </div>
+              <div class="card-footer">
+                <a href="recipe.html" class="btn-view-recipe">View →</a>
+              </div>
+            </article>
+
+            <!-- Recipe 5 -->
+            <article class="recipe-card">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&q=80" alt="Avocado Toast">
+                <span class="card-badge">Easy</span>
+                <button class="btn-save-card">🤍</button>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="meta-item"><span class="icon"></span><u><b>20 min</b></u></span>
+                  <span class="meta-item"><span class="icon"></span><u><b>Serves 2</b></u></span>
+                </div>
+                <h3 class="card-title">Avocado Toast with Poached Eggs</h3>
+                <p class="card-desc">A café classic done properly — silky poached eggs on crushed avocado toast with chilli and lemon.</p>
+                <div class="card-tags">
+                  <span class="card-tag">eggs</span>
+                  <span class="card-tag">breakfast</span>
+                  <span class="card-tag dietary">vegetarian</span>
+                </div>
+              </div>
+              <div class="card-footer">
+                <a href="recipe.html" class="btn-view-recipe">View →</a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="footer-inner">
+          <div>
+            <div class="footer-logo">Recipe<span> Finders</span></div>
+            <div class="footer-tagline">Cook more. Waste less. Eat well.</div>
+          </div>
+          <div class="footer-links">
+            <a href="index.html">Recipes</a>
+            <a href="account.html">Account</a>
+            <a href="signup.html">Sign up free</a>
+          </div>
+          <div class="footer-copy">© 2025 Recipe Finders.</div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+  
+  <script src="Javascript.js"></script>
+
 </body>
 </html>
