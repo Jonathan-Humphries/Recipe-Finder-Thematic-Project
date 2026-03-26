@@ -3,17 +3,17 @@ CREATE TABLE ingredient(
 
 	name TEXT NOT NULL,
 
-	calories INT NOT NULL, --all nutrients per 100g
+	calories NUMERIC NOT NULL, --all nutrients per 100g
 
-	protein INT NOT NULL,
+	protein NUMERIC NOT NULL,
 
-	carbohydrates INT NOT NULL,
+	carbohydrates NUMERIC NOT NULL,
 
-	sugar INT NOT NULL,
+	sugar NUMERIC NOT NULL,
 
-	fat INT NOT NULL,
+	fat NUMERIC NOT NULL,
 
-	salt INT NOT NULL,
+	salt NUMERIC NOT NULL,
 )
 
 CREATE TABLE recipe(
