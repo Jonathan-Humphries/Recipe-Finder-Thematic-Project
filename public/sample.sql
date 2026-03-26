@@ -3,7 +3,7 @@ CREATE TABLE ingredient(
 
 	name TEXT NOT NULL,
 
-	calories INT NOT NULL, --per 100g
+	calories INT NOT NULL, --all nutrients per 100g
 
 	protein INT NOT NULL,
 
@@ -16,15 +16,6 @@ CREATE TABLE ingredient(
 	salt INT NOT NULL,
 )
 
-CREATE TABLE recipe_ingredient (
-    recipe_id INT REFERENCES recipe(id),
-    ingredient_id INT REFERENCES ingredient(id),
-    quantity NUMERIC,
-    unit TEXT,
-    PRIMARY KEY (recipe_id, ingredient_id)
-);
-
-
 CREATE TABLE recipe(
 	id SERIAL PRIMARY KEY NOT NULL,
 
@@ -32,3 +23,11 @@ CREATE TABLE recipe(
 
 	instructions TEXT NOT NULL,
 )
+
+CREATE TABLE recipe_ingredient (
+    recipe_id INT REFERENCES recipe(id),
+    ingredient_id INT REFERENCES ingredient(id),
+    quantity NUMERIC,
+    unit TEXT,
+    PRIMARY KEY (recipe_id, ingredient_id)
+);
