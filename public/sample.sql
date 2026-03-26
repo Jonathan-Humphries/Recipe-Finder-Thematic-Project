@@ -40,6 +40,12 @@ CREATE TABLE account(
 	pword  TEXT NOT NULL,
 
 	email TEXT NOT NULL,
-
-
 )
+
+CREATE TABLE account_saved_recipe (
+    recipe_id INT REFERENCES recipe(id),
+    account_id INT REFERENCES account(id),
+    quantity NUMERIC,
+    unit TEXT,
+    PRIMARY KEY (recipe_id, account_id)
+);
