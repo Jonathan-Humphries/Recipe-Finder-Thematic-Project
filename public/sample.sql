@@ -31,3 +31,15 @@ CREATE TABLE recipe_ingredient (
     unit TEXT,
     PRIMARY KEY (recipe_id, ingredient_id)
 );
+
+CREATE TABLE account(
+	id SERIAL PRIMARY KEY NOT NULL,
+
+	username TEXT NOT NULL,
+
+	pword  TEXT NOT NULL,
+
+	email TEXT NOT NULL,
+
+
+)
