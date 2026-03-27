@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — Recipe Finders</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a href="index.html" class="auth-logo">
+    <span class="logo-dot"></span>
+    Recipe Finders
+  </a>
+
+  <div class="auth-page">
+    <div class="auth-card">
+
+      <a href="index.html" class="auth-back-link">← Back to recipes</a>
+
+      <h1 class="auth-form-title">Welcome back</h1>
+      <p class="auth-form-subtitle">Don't have an account? <a href="signup.html">Sign up free</a></p>
+
+      <form action="#" method="post">
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email address</label>
+          <div class="form-input-wrap">
+            <input type="email" id="email" class="form-input" placeholder="you@example.com" autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="form-input-wrap">
+            <input type="password" id="password" class="form-input" placeholder="Enter your password" autocomplete="current-password">
+          </div>
+        </div>
+
+        <div class="form-options">
+          <label class="form-checkbox-label">
+            <input type="checkbox" class="form-checkbox"> Remember me
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-auth-submit">Sign in →</button>
+
+      </form>
+
+      <p class="terms-note">By signing in you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+
+    </div>
+  </div>
+
+</body>
+</html>

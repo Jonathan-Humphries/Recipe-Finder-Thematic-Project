@@ -1,0 +1,50 @@
+{
+  "name": "Pasta",
+  "calories": 131,
+  "protein": 5,
+  "carbohydrates": 25,
+  "sugar": 4.8,
+  "fat": 1.1,
+  "salt": 0.4
+ 
+}
+
+{
+    "name": "Garlic",
+    "calories": 149,
+    "protein": 6.4,
+    "carbohydrates": 33,
+    "sugar": 1,
+    "fat": 0.5,
+    "salt": 0.17
+}
+
+{
+    "name": "Olive oil",
+    "calories": 884,
+    "protein": 0,
+    "carbohydrates": 0,
+    "sugar": 0,
+    "fat": 100,
+    "salt": 0.02
+}
+
+{
+    "name": "Chilli flakes",
+    "calories": 376,
+    "protein": 12.5,
+    "carbohydrates": 29.4,
+    "sugar": 10,
+    "fat": 17.3,
+    "salt": 0
+}
+
+{
+    "name": "Parmesan",
+    "calories": 431,
+    "protein": 32,
+    "carbohydrates": 0,
+    "sugar": 0,
+    "fat": 29,
+    "salt": 1.6,
+}
