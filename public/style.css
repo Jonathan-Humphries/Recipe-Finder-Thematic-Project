@@ -1487,6 +1487,47 @@ footer {
   color: #c4622d
 }
 
+.nutrition-section {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 16px 0;
+}
+
+.nutrition-section h2 {
+  font-family: your-heading-font;
+  font-size: 20px;
+  color: #1C2420;
+  margin-bottom: 16px;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.nutrition-card {
+  background: #F5F0E8;
+  border-radius: 12px;
+  padding: 14px 8px;
+  text-align: center;
+}
+
+.nutrition-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2D4A3E;
+  margin-bottom: 4px;
+}
+
+.nutrition-label {
+  font-size: 11px;
+  color: #6B7B6E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 /* ── AUTH ── */
 .auth-page {
   min-height: 100vh;
