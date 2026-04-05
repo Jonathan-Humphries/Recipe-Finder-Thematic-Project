@@ -14,6 +14,8 @@ CREATE TABLE ingredient(
 	fat NUMERIC NOT NULL,
 
 	salt NUMERIC NOT NULL,
+
+	ratio NUMERIC NOT NULL,  -- multiply nutrients by this number to get them per serving
 )
 
 CREATE TABLE recipe(

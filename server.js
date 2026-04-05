@@ -22,9 +22,9 @@ app.get('/ingredients', async (req, res) =>{
 })
 
 app.post('/ingredients', async (req, res) => {
-    const {name, calories, protein, carbohydrates, sugar, fat, salt} = req.body
+    const {name, calories, protein, carbohydrates, sugar, fat, salt, ratio} = req.body
     try{
-        await pool.query('INSERT INTO ingredients (name, calories, protein, carbohydrates, sugar, fat, salt) VALUES ($1, $2, $3, $4, $5, $6, $7)', [name, calories, protein, carbohydrates, sugar, fat, salt])
+        await pool.query('INSERT INTO ingredients (name, calories, protein, carbohydrates, sugar, fat, salt, ratio) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [name, calories, protein, carbohydrates, sugar, fat, salt, ratio])
         res.status(200).send({message: "Successfully added ingredient"})
 
     }   catch (err){
