@@ -1,4 +1,4 @@
-{
+[{
   "name": "Pasta",
   "calories": 131,
   "protein": 5,
@@ -8,7 +8,7 @@
   "salt": 0.4,
   "ratio": 1
  
-}
+},
 
 {
     "name": "Garlic",
@@ -20,7 +20,7 @@
     "salt": 0.17,
     "ratio": 0.05
 
-}
+},
 
 {
     "name": "Olive oil",
@@ -31,7 +31,7 @@
     "fat": 100,
     "salt": 0.02,
     "ratio": 0.137
-}
+},
 
 {
     "name": "Chilli flakes",
@@ -42,7 +42,7 @@
     "fat": 17.3,
     "salt": 0,
     "ratio": 0.05
-}
+},
 
 {
     "name": "Parmesan",
@@ -53,4 +53,4 @@
     "fat": 29,
     "salt": 1.6,
     "ratio": 0.28
-}
+}]
