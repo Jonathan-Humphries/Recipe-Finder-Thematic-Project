@@ -161,6 +161,47 @@ document.addEventListener('DOMContentLoaded', () => {
       const bubble = document.querySelector('.count-bubble');
       if (bubble) bubble.textContent = availableIngredients.length;
       renderIngredientTags();
+
+      const servingsDisplay = document.getElementById('servings-count');
+const btnPlus = document.getElementById('btn-plus');
+const btnMinus = document.getElementById('btn-minus');
+
+const baseServings = 2; 
+let currentServings = 2;
+
+// 1. Function to update numbers
+function updateRecipe() {
+    servingsDisplay.textContent = currentServings;
+    const ratio = currentServings / baseServings;
+
+    // Update all amounts (Ingredients + Nutrition)
+    document.querySelectorAll('.amt, .nutrition-value').forEach(el => {
+        const baseValue = parseFloat(el.getAttribute('data-base'));
+        if (baseValue) {
+            // Calculate and round to 1 decimal place if needed
+            const newValue = baseValue * ratio;
+            el.textContent = Number.isInteger(newValue) ? newValue : newValue.toFixed(1);
+        }
+    });
+}
+
+// 2. Button Listeners
+btnPlus.addEventListener('click', () => {
+    currentServings++;
+    updateRecipe();
+});
+
+btnMinus.addEventListener('click', () => {
+    if (currentServings > 1) {
+        currentServings--;
+        updateRecipe();
+    }
+});
+
+// 3. Checklist Logic
+document.querySelectorAll('.ingredient-item').forEach(item => {
+    item.addEventListener('click', () => {
+        item.classList.toggle('checked');
     });
   });
 });

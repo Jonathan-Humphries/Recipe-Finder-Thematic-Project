@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spaghetti Aglio e Olio — Recipe Finders</title>
   <link rel="stylesheet" href="style.css">
+  <script src"Javascript.js></script>
 </head>
 <body>
 
@@ -117,31 +118,36 @@
           <h3 class="ingredients-card-title">Ingredients</h3>
           <div class="servings-control">
             <span class="servings-label">Serves</span>
-            <button class="servings-btn">−</button>
-            <span class="servings-count">2</span>
-            <button class="servings-btn">+</button>
+            <button id="btn-minus" class="servings-btn">−</button>
+            <span id="servings-count" class="servings-count">2</span>
+            <button id="btn-plus" class="servings-btn">+</button>
           </div>
         </div>
         <div class="ingredients-list">
           <div class="ingredient-item">
             <div class="ingredient-check"></div>
             <span class="ingredient-name">spaghetti</span>
-            <span class="ingredient-amount">200g</span>
+            <span class="ingredient-amount">
+            <span class="amt" data-base="200">200</span>g</span>
           </div>
           <div class="ingredient-item">
             <div class="ingredient-check"></div>
             <span class="ingredient-name">garlic cloves</span>
-            <span class="ingredient-amount">6</span>
+            <span class="ingredient-amount">
+            <span class="amt" data-base="6">6</span>
+            </span>
           </div>
           <div class="ingredient-item">
             <div class="ingredient-check"></div>
             <span class="ingredient-name">extra-virgin olive oil</span>
-            <span class="ingredient-amount">6 tbsp</span>
+            <span class="ingredient-amount">
+              <span class="amt" data-base="6">6</span> tbsp</span>
           </div>
           <div class="ingredient-item">
             <div class="ingredient-check"></div>
             <span class="ingredient-name">red chilli flakes</span>
-            <span class="ingredient-amount">1 tsp</span>
+            <span class="ingredient-amount">
+            <span class="amt" data-base="1">1</span>tsp</span>
           </div>
           <div class="ingredient-item">
             <div class="ingredient-check"></div>
@@ -166,6 +172,33 @@
         </div>
       </div>
 
+      <!-- Nutrition -->
+      <div class="nutrition-section">
+  <h2>Nutrition per serving</h2>
+  <div class="nutrition-grid">
+    <div class="nutrition-card">
+      <div class="nutrition-value" data-base="480">480</div>
+      <div class="nutrition-label">Calories</div>
+    </div>
+    <div class="nutrition-card">
+      <div class="nutrition-value" data-base="14">14</div>
+      <div class="nutrition-label">Protein</div>
+    </div>
+    <div class="nutrition-card">
+      <div class="nutrition-value" data-base="68">68</div>
+      <div class="nutrition-label">Carbs</div>
+    </div>
+    <div class="nutrition-card">
+      <div class="nutrition-value" data-base="16">16</div>
+      <div class="nutrition-label">Fat</div>
+    </div>
+    <div class="nutrition-card">
+      <div class="nutrition-value" data-base="3">3</div>
+      <div class="nutrition-label">Fibre</div>
+    </div>
+  </div>
+</div>
+      
       <!-- Actions -->
       <div class="action-card">
         <h3 class="action-card-title">Save and share</h3>
@@ -183,6 +216,6 @@
       <div class="footer-copy">© 2025 Recipe Finders.</div>
     </div>
   </footer>
-
+<script src"Javascript.js></script>
 </body>
 </html>
