@@ -47,7 +47,7 @@ CREATE TABLE account(
 CREATE TABLE account_saved_recipe (
     recipe_id INT REFERENCES recipe(id),
     account_id INT REFERENCES account(id),
-    quantity NUMERIC,
-    unit TEXT,
+    quantity NUMERIC,						-- number of amounts of servings
+    unit TEXT,								-- servings or grams etc
     PRIMARY KEY (recipe_id, account_id)
 );
