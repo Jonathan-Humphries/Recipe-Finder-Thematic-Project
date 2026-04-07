@@ -21,7 +21,7 @@ CREATE TABLE ingredient(
 CREATE TABLE recipe(
 	id SERIAL PRIMARY KEY NOT NULL,
 
-	name TEXT NOT NULL,
+	name TEXT NOT NULL UNIQUE,
 
 	instructions TEXT NOT NULL
 );
