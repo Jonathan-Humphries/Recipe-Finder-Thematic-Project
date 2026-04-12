@@ -1,9 +1,9 @@
 CREATE TABLE ingredient(
 	id SERIAL PRIMARY KEY NOT NULL,
 
-	name TEXT NOT NULL,
+	name TEXT NOT NULL UNIQUE,
 
-	calories NUMERIC NOT NULL, --all nutrients per 100g
+	calories INTEGER NOT NULL, --all nutrients per 100g
 
 	protein NUMERIC NOT NULL,
 
@@ -15,16 +15,16 @@ CREATE TABLE ingredient(
 
 	salt NUMERIC NOT NULL,
 
-	ratio NUMERIC NOT NULL,  -- multiply nutrients by this number to get them per serving
-)
+	ratio NUMERIC NOT NULL  -- multiply nutrients by this number to get them per serving
+);
 
 CREATE TABLE recipe(
 	id SERIAL PRIMARY KEY NOT NULL,
 
-	name TEXT NOT NULL,
+	name TEXT NOT NULL UNIQUE,
 
-	instructions TEXT NOT NULL,
-)
+	instructions TEXT NOT NULL
+);
 
 CREATE TABLE recipe_ingredient (
     recipe_id INT REFERENCES recipe(id),
@@ -41,8 +41,8 @@ CREATE TABLE account(
 
 	pword  TEXT NOT NULL,
 
-	email TEXT NOT NULL,
-)
+	email TEXT NOT NULL
+);
 
 CREATE TABLE account_saved_recipe (
     recipe_id INT REFERENCES recipe(id),
