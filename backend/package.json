@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/Jonathan-Humphries/Recipe-Finder-Thematic-Project#readme",
   "dependencies": {
+    "bcrypt":  "^5.1.1",
     "express": "^5.2.1",
-    "pg": "^8.19.0"
+    "pg":      "^8.19.0"
   }
 }

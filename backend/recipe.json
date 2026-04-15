@@ -1,0 +1,129 @@
+[
+  {
+    "name": "Spaghetti Aglio e Olio",
+    "description": "A classic Italian pasta dish made with garlic, olive oil, and chilli flakes — simple, bold, and endlessly satisfying. Proof that the best meals need only a handful of great ingredients.",
+    "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&q=80",
+    "time_mins": 20,
+    "servings": 2,
+    "difficulty": "Easy",
+    "dietary": ["vegetarian", "vegan"],
+    "tags": ["pasta", "italian", "quick"],
+    "notes": "The pasta water is the secret — its starchiness helps emulsify the sauce and makes it cling beautifully to the noodles. Don't skip it! Add it a splash at a time until the sauce is glossy.",
+    "steps": [
+      "Bring a large pot of well-salted water to a boil. Cook spaghetti until al dente. Before draining, reserve 1 cup of starchy pasta water.",
+      "While the pasta cooks, peel and thinly slice the garlic cloves. Heat olive oil in a large skillet over medium-low heat until shimmering.",
+      "Add the sliced garlic to the oil and cook gently, stirring often, until golden and fragrant — about 3–4 minutes. Keep the heat low; burnt garlic will ruin the dish.",
+      "Add the red chilli flakes and cook for 30 seconds more, letting them bloom in the oil.",
+      "Add the drained pasta directly to the skillet with a generous splash of reserved pasta water. Toss vigorously over medium heat.",
+      "Remove from heat, add fresh parsley, season generously with salt and black pepper. Serve with grated parmesan if desired."
+    ],
+    "ingredients": [
+      { "name": "Pasta", "quantity": 200, "unit": "g" },
+      { "name": "Garlic", "quantity": 6, "unit": "cloves" },
+      { "name": "Olive oil", "quantity": 6, "unit": "tbsp" },
+      { "name": "Chilli flakes", "quantity": 1, "unit": "tsp" },
+      { "name": "Parmesan", "quantity": 30, "unit": "g" }
+    ]
+  },
+  {
+    "name": "Shakshuka",
+    "description": "Eggs poached in a rich, spiced tomato and pepper sauce. A one-pan wonder perfect for breakfast, lunch, or dinner.",
+    "image": "https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=800&q=80",
+    "time_mins": 25,
+    "servings": 2,
+    "difficulty": "Easy",
+    "dietary": ["vegetarian", "gluten-free"],
+    "tags": ["eggs", "breakfast", "one-pan"],
+    "notes": "Make a slight well in the sauce before adding each egg so they stay in place while cooking. Cover the pan to steam the tops of the eggs.",
+    "steps": [
+      "Heat olive oil in a large frying pan over medium heat. Add diced onion and cook for 5 minutes until softened.",
+      "Add sliced garlic, cumin, paprika, and chilli flakes. Stir for 1 minute until fragrant.",
+      "Pour in the crushed tomatoes, season with salt and pepper. Simmer for 10 minutes until thickened.",
+      "Make 4 wells in the sauce and crack an egg into each. Cover and cook for 5–7 minutes until whites are set but yolks still runny.",
+      "Scatter over crumbled feta and fresh parsley. Serve straight from the pan with crusty bread."
+    ],
+    "ingredients": [
+      { "name": "Eggs", "quantity": 4, "unit": "" },
+      { "name": "Tomatoes", "quantity": 400, "unit": "g tinned" },
+      { "name": "Onion", "quantity": 1, "unit": "" },
+      { "name": "Garlic", "quantity": 3, "unit": "cloves" },
+      { "name": "Olive oil", "quantity": 2, "unit": "tbsp" },
+      { "name": "Chilli flakes", "quantity": 0.5, "unit": "tsp" }
+    ]
+  },
+  {
+    "name": "Chickpea Curry",
+    "description": "A hearty and fragrant chickpea curry with warming spices and creamy coconut milk. Ready in under 30 minutes and completely vegan.",
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80",
+    "time_mins": 30,
+    "servings": 4,
+    "difficulty": "Easy",
+    "dietary": ["vegan", "vegetarian", "gluten-free", "dairy-free"],
+    "tags": ["curry", "indian", "one-pan"],
+    "notes": "For a richer curry, let the tomato paste cook for a full 2 minutes before adding the coconut milk — this removes the raw flavour and deepens the sauce.",
+    "steps": [
+      "Heat oil in a large pan over medium heat. Fry the diced onion for 6–8 minutes until golden.",
+      "Add garlic, ginger, cumin, coriander, turmeric, and garam masala. Stir for 2 minutes.",
+      "Stir in tomato paste and cook for 2 minutes more.",
+      "Add drained chickpeas and coconut milk. Stir well, bring to a simmer.",
+      "Cook uncovered for 10 minutes until the sauce thickens. Season with salt.",
+      "Squeeze in lemon juice, scatter with fresh coriander, and serve with rice or flatbread."
+    ],
+    "ingredients": [
+      { "name": "Chickpeas", "quantity": 400, "unit": "g tinned" },
+      { "name": "Onion", "quantity": 1, "unit": "" },
+      { "name": "Garlic", "quantity": 4, "unit": "cloves" },
+      { "name": "Tomatoes", "quantity": 200, "unit": "g" },
+      { "name": "Olive oil", "quantity": 2, "unit": "tbsp" },
+      { "name": "Rice", "quantity": 200, "unit": "g" }
+    ]
+  },
+  {
+    "name": "Honey Garlic Noodles",
+    "description": "Silky noodles tossed in a sticky, sweet-savoury honey garlic sauce. On the table in 15 minutes — dangerously addictive.",
+    "image": "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=800&q=80",
+    "time_mins": 15,
+    "servings": 2,
+    "difficulty": "Easy",
+    "dietary": ["vegan", "dairy-free"],
+    "tags": ["noodles", "asian", "quick"],
+    "notes": "Don't let the garlic burn — it turns bitter very quickly. Keep the heat medium and stir constantly once it hits the pan.",
+    "steps": [
+      "Cook noodles according to package instructions. Drain and set aside, reserving a splash of cooking water.",
+      "Mix together soy sauce, honey, sesame oil, and rice vinegar in a small bowl.",
+      "Heat oil in a wok or large frying pan over medium heat. Add minced garlic and cook for 60 seconds.",
+      "Pour in the sauce and let it bubble for 30 seconds.",
+      "Add the noodles and toss to coat, adding a splash of pasta water to loosen if needed.",
+      "Serve topped with sliced spring onions and sesame seeds."
+    ],
+    "ingredients": [
+      { "name": "Pasta", "quantity": 180, "unit": "g noodles" },
+      { "name": "Garlic", "quantity": 5, "unit": "cloves" },
+      { "name": "Olive oil", "quantity": 2, "unit": "tbsp" }
+    ]
+  },
+  {
+    "name": "Avocado Toast with Poached Eggs",
+    "description": "A café classic done properly — silky poached eggs on crushed avocado toast with chilli and lemon.",
+    "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&q=80",
+    "time_mins": 15,
+    "servings": 2,
+    "difficulty": "Easy",
+    "dietary": ["vegetarian", "dairy-free"],
+    "tags": ["eggs", "breakfast", "quick"],
+    "notes": "For perfectly poached eggs, add a splash of white wine vinegar to the water before swirling. The acid helps the white hold together.",
+    "steps": [
+      "Bring a pan of water to a gentle simmer. Add a splash of white wine vinegar.",
+      "Halve and stone the avocados. Scoop the flesh into a bowl, add lemon juice, salt and pepper, and crush with a fork.",
+      "Toast the bread until golden and crisp.",
+      "Swirl the simmering water with a spoon, crack in the eggs one at a time, and poach for 3 minutes.",
+      "Spread the crushed avocado onto the toast. Top with poached eggs, chilli flakes, and a drizzle of olive oil."
+    ],
+    "ingredients": [
+      { "name": "Eggs", "quantity": 4, "unit": "" },
+      { "name": "Avocado", "quantity": 2, "unit": "" },
+      { "name": "Chilli flakes", "quantity": 0.5, "unit": "tsp" },
+      { "name": "Olive oil", "quantity": 1, "unit": "tbsp" }
+    ]
+  }
+]

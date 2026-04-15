@@ -1,13 +1,17 @@
-FROM node:16
+FROM node:20
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+# Install dependencies first (better layer caching)
+COPY backend/package*.json ./backend/
+RUN cd backend && npm install
 
-RUN npm install
+# Copy backend source
+COPY backend/ ./backend/
 
-COPY . .
+# Copy frontend (served statically by Express from ../public)
+COPY public/ ./public/
 
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+CMD ["node", "backend/server.js"]

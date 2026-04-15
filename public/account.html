@@ -4,24 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Account — Recipe Finders</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="account">
 
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-inner">
-<a href="index.html" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <span class="logo-leaf"></span>
         Recipe Finders
       </a>
       <div class="nav-actions">
-        <div class="nav-user-menu">
+        <div id="nav-user-menu" class="nav-user-menu">
           <a href="account.html">
-            <div class="user-avatar">JO</div>
+            <div class="user-avatar" id="user-avatar">?</div>
           </a>
-          <span class="user-name">Jamie Oliver</span>
-          <a href="index.html" class="btn-logout">Sign out</a>
+          <span class="user-name" id="user-name-display"></span>
+          <button class="btn-logout" id="btn-logout">Sign out</button>
         </div>
       </div>
     </div>
@@ -30,14 +30,14 @@
   <!-- ACCOUNT HEADER -->
   <div class="account-header">
     <div class="account-header-inner">
-      <div class="account-avatar-large">JO</div>
-      <div>
-        <h1 class="account-header-name">Jamie Oliver</h1>
-        <p class="account-header-email">jamie@example.com</p>
+      <div class="account-avatar-large">?</div>
+      <div class="account-header-info">
+        <h1 class="account-header-name user-name-display">Welcome</h1>
+        <p class="account-header-email" id="account-header-email"></p>
       </div>
       <div class="account-header-stats">
         <div class="account-stat">
-          <div class="num">1</div>
+          <div class="num" id="saved-count">0</div>
           <div class="lbl">Saved recipes</div>
         </div>
       </div>
@@ -47,111 +47,106 @@
   <!-- ACCOUNT LAYOUT -->
   <div class="account-layout">
 
-    <!-- SIDEBAR NAV -->
+    <!-- Sidebar Nav -->
     <nav class="account-nav">
-      <a href="account.html" class="account-nav-item active">
+      <button class="account-nav-item active" data-panel="profile">
         <span class="account-nav-icon"></span> Profile
-      </a>
-      <a href="account.html" class="account-nav-item">
+      </button>
+      <button class="account-nav-item" data-panel="password">
         <span class="account-nav-icon"></span> Password
-      </a>
+      </button>
       <div class="account-nav-divider"></div>
-      <a href="account.html" class="account-nav-item">
+      <button class="account-nav-item" data-panel="saved">
         <span class="account-nav-icon"></span> Saved Recipes
-      </a>
+      </button>
       <div class="account-nav-divider"></div>
-      <a href="account.html" class="account-nav-item">
+      <button class="account-nav-item" data-panel="danger">
         <span class="account-nav-icon"></span> Danger Zone
-      </a>
+      </button>
     </nav>
 
+    <!-- Panels -->
     <div class="account-panels">
 
-      <!-- PROFILE PANEL -->
+      <!-- Profile Panel -->
       <div class="account-panel active" id="panel-profile">
         <h2 class="panel-title">Your Profile</h2>
         <p class="panel-subtitle">Update your name and account details</p>
-
-        <form class="profile-form" action="#" method="post">
+        <form class="profile-form" id="profile-form">
           <h3 class="profile-section-title">Personal Information</h3>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="profile-name">Display name</label>
-              <input type="text" id="profile-name" class="form-input" value="Jamie Oliver">
+              <input type="text" id="profile-name" class="form-input" placeholder="Your name">
             </div>
             <div class="form-group">
               <label class="form-label" for="profile-email">Email address</label>
-              <input type="email" id="profile-email" class="form-input" value="jamie@example.com" disabled style="opacity:.6;cursor:not-allowed">
+              <input type="email" id="profile-email" class="form-input" disabled style="opacity:.6;cursor:not-allowed" title="Email cannot be changed">
             </div>
           </div>
           <div class="form-actions">
-            <button type="button" class="btn-cancel">Reset</button>
+            <button type="button" class="btn-cancel" onclick="this.closest('form').reset()">Reset</button>
             <button type="submit" class="btn-save">Save changes</button>
           </div>
         </form>
+      </div>
 
-        <!-- Password Section -->
-        <form class="profile-form" action="#" method="post">
-          <h3 class="profile-section-title">Change Password</h3>
+      <!-- Password Panel -->
+      <div class="account-panel" id="panel-password">
+        <h2 class="panel-title">Change Password</h2>
+        <p class="panel-subtitle">Keep your account secure with a strong password</p>
+        <form class="profile-form" id="password-form">
+          <h3 class="profile-section-title">Update Password</h3>
           <div class="form-group">
-            <label class="form-label" for="current-pass">Current password</label>
-            <input type="password" id="current-pass" class="form-input" placeholder="Your current password">
+            <label class="form-label" for="current-password">Current password</label>
+            <input type="password" id="current-password" class="form-input" placeholder="Your current password">
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="new-pass">New password</label>
-              <input type="password" id="new-pass" class="form-input" placeholder="At least 6 characters">
+              <label class="form-label" for="new-password">New password</label>
+              <input type="password" id="new-password" class="form-input" placeholder="At least 6 characters">
             </div>
             <div class="form-group">
-              <label class="form-label" for="confirm-pass">Confirm new password</label>
-              <input type="password" id="confirm-pass" class="form-input" placeholder="Repeat new password">
+              <label class="form-label" for="confirm-new-password">Confirm new password</label>
+              <input type="password" id="confirm-new-password" class="form-input" placeholder="Repeat new password">
             </div>
           </div>
           <div class="form-actions">
             <button type="submit" class="btn-save">Update password</button>
           </div>
         </form>
+      </div>
 
-        <!-- Saved Recipes -->
-        <h2 class="panel-title" style="margin-top:2rem">Saved Recipes</h2>
+      <!-- Saved Recipes Panel -->
+      <div class="account-panel" id="panel-saved">
+        <h2 class="panel-title">Saved Recipes</h2>
         <p class="panel-subtitle">Your personal collection of recipes to cook again</p>
+        <div id="saved-recipes-container"></div>
+      </div>
 
-        <div class="saved-recipe-grid">
-
-          <article class="saved-recipe-card">
-            <div class="saved-card-img-wrap">
-              <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80" alt="Spaghetti">
-              <button class="btn-unsave">💔</button>
-            </div>
-            <div class="saved-card-body">
-              <h4 class="saved-card-title">Spaghetti Aglio e Olio</h4>
-              <div class="saved-card-meta"><span>20 min</span><span>Serves 2</span></div>
-              <a href="recipe.html" class="btn-view-saved">View recipe →</a>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- Danger Zone -->
-        <div class="danger-zone" style="margin-top:2.5rem">
+      <!-- Danger Zone Panel -->
+      <div class="account-panel" id="panel-danger">
+        <h2 class="panel-title">Danger Zone</h2>
+        <p class="panel-subtitle">Irreversible actions — please be careful</p>
+        <div class="danger-zone">
           <div class="danger-zone-title">Delete Account</div>
-          <p class="danger-zone-text">Permanently delete your account and all saved recipes. This action cannot be undone and your data will be removed immediately.</p>
-          <button class="btn-danger">Delete my account</button>
+          <p class="danger-zone-text">Permanently delete your account and all saved recipes. This action cannot be undone.</p>
+          <button class="btn-danger" id="btn-delete-account">Delete my account</button>
         </div>
-
       </div>
 
     </div>
-
   </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-logo">Recipe Finders</div>
-      <div class="footer-copy">© 2025 Recipe Finders.</div>
+      <div class="footer-logo">Recipe <span>Finders</span></div>
+      <div class="footer-copy">2026 Recipe Finders.</div>
     </div>
   </footer>
 
+  <div class="toast" id="toast"></div>
+  <script src="js/Javascript.js"></script>
 </body>
 </html>

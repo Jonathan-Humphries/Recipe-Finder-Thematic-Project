@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Account — Recipe Finders</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="signup">
 
   <a href="index.html" class="auth-logo">
     <span class="logo-dot"></span>
@@ -21,13 +21,14 @@
       <h1 class="auth-form-title">Create your account</h1>
       <p class="auth-form-subtitle">Already have an account? <a href="login.html">Sign in</a></p>
 
-      <form action="#" method="post">
+      <form id="signup-form" novalidate>
 
         <div class="form-group">
           <label class="form-label" for="name">Your name</label>
           <div class="form-input-wrap">
             <input type="text" id="name" class="form-input" placeholder="Jamie Oliver" autocomplete="name">
           </div>
+          <div class="form-error" id="name-error"></div>
         </div>
 
         <div class="form-group">
@@ -35,12 +36,14 @@
           <div class="form-input-wrap">
             <input type="email" id="email" class="form-input" placeholder="you@example.com" autocomplete="email">
           </div>
+          <div class="form-error" id="email-error"></div>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="password">Password</label>
           <div class="form-input-wrap">
-            <input type="password" id="password" class="form-input" placeholder="Create a strong password" autocomplete="new-password">
+            <input type="password" id="password" class="form-input" placeholder="At least 6 characters" autocomplete="new-password">
+            <button type="button" class="password-toggle" id="toggle-password">👁</button>
           </div>
         </div>
 
@@ -49,16 +52,19 @@
           <div class="form-input-wrap">
             <input type="password" id="confirm" class="form-input" placeholder="Repeat your password" autocomplete="new-password">
           </div>
+          <div class="form-error" id="confirm-error"></div>
         </div>
 
-        <button type="submit" class="btn-auth-submit">Create my account →</button>
+        <button type="submit" class="btn-auth-submit" id="btn-submit">Create my account →</button>
 
       </form>
 
-      <p class="terms-note">By creating an account you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+      <p class="terms-note">By creating an account you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
 
     </div>
   </div>
 
+  <div class="toast" id="toast"></div>
+  <script src="js/Javascript.js"></script>
 </body>
 </html>

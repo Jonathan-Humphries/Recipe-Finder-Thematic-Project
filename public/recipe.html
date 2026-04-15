@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spaghetti Aglio e Olio — Recipe Finders</title>
-  <link rel="stylesheet" href="style.css">
-  <script src"Javascript.js></script>
+  <title>Recipe — Recipe Finders</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="recipe">
 
   <!-- NAVIGATION -->
   <nav class="navbar">
@@ -17,26 +16,42 @@
         Recipe Finders
       </a>
       <div class="nav-actions">
-        <a href="login.html" class="btn-nav-login">Sign in</a>
-        <a href="signup.html" class="btn-nav-signup">Get started</a>
+        <div id="nav-auth-btns" style="display:flex;align-items:center;gap:0.75rem;">
+          <a href="login.html"  class="btn-nav-login">Sign in</a>
+          <a href="signup.html" class="btn-nav-signup">Get started</a>
+        </div>
+        <div id="nav-user-menu" class="nav-user-menu" style="display:none;">
+          <a href="account.html">
+            <div class="user-avatar" id="user-avatar">?</div>
+          </a>
+          <span class="user-name" id="user-name-display"></span>
+          <button class="btn-logout" id="btn-logout">Sign out</button>
+        </div>
       </div>
     </div>
   </nav>
 
-  <!-- HERO  -->
+  <!-- HERO -->
   <div class="recipe-hero">
-    <img class="recipe-hero-img" src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=1400&q=80" alt="Spaghetti Aglio e Olio">
+    <img class="recipe-hero-img" id="hero-img" src="" alt="">
     <div class="recipe-hero-overlay"></div>
     <div class="recipe-hero-content">
       <div class="recipe-breadcrumb">
         <a href="index.html">← All recipes</a>
         <span class="sep">/</span>
-        <span>Spaghetti Aglio e Olio</span>
+        <span id="hero-title-breadcrumb">Recipe</span>
       </div>
-      <h1 class="recipe-hero-title">Spaghetti Aglio e Olio</h1>
+      <h1 class="recipe-hero-title" id="hero-title">Loading…</h1>
       <div class="recipe-hero-meta">
-        <div class="recipe-meta-pill"><span class="pill-icon"></span><u><b>20 min</b></u></div>
-        <div class="recipe-meta-pill"><span class="pill-icon"></span><u><b>Serves 2</b></u></div>
+        <div class="recipe-meta-pill">
+          <span id="meta-time">—</span>
+        </div>
+        <div class="recipe-meta-pill">
+          <span id="meta-servings">—</span>
+        </div>
+        <div class="recipe-meta-pill" id="difficulty-pill">
+          <span id="meta-difficulty">—</span>
+        </div>
       </div>
     </div>
   </div>
@@ -44,72 +59,30 @@
   <!-- MAIN CONTENT -->
   <main class="recipe-main">
 
-    <!-- LEFT COLUMN -->
+    <!-- LEFT: Steps & Info -->
     <div class="recipe-content-col">
 
-      <p class="recipe-description">A classic Italian pasta dish made with garlic, olive oil, and chilli flakes — simple, bold, and endlessly satisfying. Proof that the best meals need only a handful of great ingredients.</p>
+      <p class="recipe-description" id="recipe-description"></p>
+      <div class="recipe-tags" id="recipe-tags"></div>
 
-      <div class="recipe-tags">
-        <span class="recipe-tag dietary">vegetarian</span>
-        <span class="recipe-tag dietary">vegan</span>
-        <span class="recipe-tag category">pasta</span>
-        <span class="recipe-tag category">italian</span>
-        <span class="recipe-tag category">quick</span>
-      </div>
-
-      <!-- Steps -->
       <section class="steps-section">
         <div class="section-header">
-          <div class="section-icon">📋</div>
           <h2 class="section-title">How to make it</h2>
         </div>
-        <div class="steps-list">
-
-          <div class="step-item">
-            <div class="step-number">1</div>
-            <p class="step-text">Bring a large pot of well-salted water to a boil. Cook spaghetti until al dente according to package instructions. Before draining, reserve 1 cup of starchy pasta water — this is the secret to a silky sauce.</p>
-          </div>
-
-          <div class="step-item">
-            <div class="step-number">2</div>
-            <p class="step-text">While the pasta cooks, peel and thinly slice the garlic cloves. Heat olive oil in a large skillet over medium-low heat until shimmering but not smoking.</p>
-          </div>
-
-          <div class="step-item">
-            <div class="step-number">3</div>
-            <p class="step-text">Add the sliced garlic to the oil and cook gently, stirring often, until golden and fragrant — about 3–4 minutes. Keep the heat low; burnt garlic will make the whole dish bitter.</p>
-          </div>
-
-          <div class="step-item">
-            <div class="step-number">4</div>
-            <p class="step-text">Add the red chilli flakes and cook for 30 seconds more, letting them bloom in the oil and release their heat.</p>
-          </div>
-
-          <div class="step-item">
-            <div class="step-number">5</div>
-            <p class="step-text">Add the drained pasta directly to the skillet along with a generous splash of reserved pasta water. Toss vigorously over medium heat to coat every strand in the garlicky oil.</p>
-          </div>
-
-          <div class="step-item">
-            <div class="step-number">6</div>
-            <p class="step-text">Remove from heat, add a large handful of chopped fresh parsley, and season generously with salt and black pepper. Toss once more. Serve immediately with grated parmesan if desired.</p>
-          </div>
-
-        </div>
+        <p style="font-size:0.82rem;color:#8a8a7a;margin-bottom:1rem;">Click each step to mark it as done</p>
+        <div class="steps-list" id="steps-list"></div>
       </section>
 
-      <!-- Notes -->
-      <div class="notes-section">
-        <div class="notes-icon"></div>
+      <div class="notes-section" id="notes-section">
         <div>
           <div class="notes-title">Chef's Note</div>
-          <p class="notes-text">The pasta water is the secret — its starchiness helps emulsify the sauce and makes it cling beautifully to the noodles. Don't skip it! Add it a splash at a time until the sauce is glossy and coats the pasta.</p>
+          <p class="notes-text" id="recipe-notes"></p>
         </div>
       </div>
 
     </div>
 
-    <!-- SIDEBAR -->
+    <!-- RIGHT: Sidebar -->
     <aside class="recipe-sidebar">
 
       <!-- Ingredients -->
@@ -118,61 +91,16 @@
           <h3 class="ingredients-card-title">Ingredients</h3>
           <div class="servings-control">
             <span class="servings-label">Serves</span>
-            <button id="btn-minus" class="servings-btn">−</button>
-            <span id="servings-count" class="servings-count">2</span>
-            <button id="btn-plus" class="servings-btn">+</button>
+            <button class="servings-btn" id="btn-servings-minus">−</button>
+            <span class="servings-count" id="servings-count">—</span>
+            <button class="servings-btn" id="btn-servings-plus">+</button>
           </div>
         </div>
-        <div class="ingredients-list">
-          <div class="ingredient-item">
-            <div class="ingredient-check"></div>
-            <span class="ingredient-name">spaghetti</span>
-            <span class="ingredient-amount">
-            <span class="amt" data-base="200">200</span>g</span>
-          </div>
-          <div class="ingredient-item">
-            <div class="ingredient-check"></div>
-            <span class="ingredient-name">garlic cloves</span>
-            <span class="ingredient-amount">
-            <span class="amt" data-base="6">6</span>
-            </span>
-          </div>
-          <div class="ingredient-item">
-            <div class="ingredient-check"></div>
-            <span class="ingredient-name">extra-virgin olive oil</span>
-            <span class="ingredient-amount">
-              <span class="amt" data-base="6">6</span> tbsp</span>
-          </div>
-          <div class="ingredient-item">
-            <div class="ingredient-check"></div>
-            <span class="ingredient-name">red chilli flakes</span>
-            <span class="ingredient-amount">
-            <span class="amt" data-base="1">1</span>tsp</span>
-          </div>
-          <div class="ingredient-item">
-            <div class="ingredient-check"></div>
-            <span class="ingredient-name">fresh flat-leaf parsley</span>
-            <span class="ingredient-amount">large handful</span>
-          </div>
-          <div class="ingredient-item">
-            <div class="ingredient-check"></div>
-            <span class="ingredient-name">salt</span>
-            <span class="ingredient-amount">to taste</span>
-          </div>
-          <div class="ingredient-item">
-            <div class="ingredient-check"></div>
-            <span class="ingredient-name">black pepper</span>
-            <span class="ingredient-amount">to taste</span>
-          </div>
-          <div class="ingredient-item">
-            <div class="ingredient-check"></div>
-            <span class="ingredient-name">parmesan (optional)</span>
-            <span class="ingredient-amount">to serve</span>
-          </div>
+        <div class="ingredients-list" id="ingredients-list">
+          <p style="padding:1rem;color:#8a8a7a;font-size:0.9rem;">Loading…</p>
         </div>
       </div>
-
-      <!-- Nutrition -->
+       <!-- Nutrition -->
       <div class="nutrition-section">
   <h2>Nutrition per serving</h2>
   <div class="nutrition-grid">
@@ -198,12 +126,12 @@
     </div>
   </div>
 </div>
-      
+
       <!-- Actions -->
       <div class="action-card">
-        <h3 class="action-card-title">Save and share</h3>
-        <button class="btn-save-recipe">Save this recipe</button>
-        <button class="btn-share-recipe">Share recipe</button>
+        <h3 class="action-card-title">Save &amp; share</h3>
+        <button class="btn-save-recipe" id="btn-save-recipe">Save this recipe</button>
+        <button class="btn-share-recipe" id="btn-share-recipe">Share recipe</button>
       </div>
 
     </aside>
@@ -213,9 +141,11 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">Recipe <span>Finders</span></div>
-      <div class="footer-copy">© 2025 Recipe Finders.</div>
+      <div class="footer-copy">2026 Recipe Finders.</div>
     </div>
   </footer>
-<script src"Javascript.js></script>
+
+  <div class="toast" id="toast"></div>
+  <script src="js/Javascript.js"></script>
 </body>
 </html>

@@ -1,7 +1,9 @@
-version: "3"
+version: "3.8"
+
 services:
+
   db:
-    image: postgres
+    image: postgres:16
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user
@@ -9,14 +11,27 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./sample.sql:/docker-entrypoint-initdb.d/sample.sql
-
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   app:
     build: .
     image: recipe-finder
     depends_on:
-      - db
-    command: sh -c "sleep 5 && node importIngredients.js && node importRecipes.js && node server.js"
+      db:
+        condition: service_healthy   # waits until Postgres is actually ready
+    environment:
+      DB_HOST:     db
+      DB_PORT:     5432
+      DB_USER:     user
+      DB_PASSWORD: password
+      DB_NAME:     db
     ports:
       - "13000:3000"
+
+volumes:
+  pg_data:
