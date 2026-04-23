@@ -1,4 +1,4 @@
-// ── API Helper ───────────────────────────────────────────────
+//  API Helper 
 
 const API = {
   base: '/api',
@@ -50,7 +50,7 @@ const API = {
   }
 };
 
-// ── Session helpers ──────────────────────────────────────────
+//  Session helpers 
 
 function getUser() {
   try { return JSON.parse(localStorage.getItem('freshly_user') || 'null'); }
@@ -71,7 +71,7 @@ function isLoggedIn() {
   return !!getUser() && !!API.token();
 }
 
-// ── Toast ────────────────────────────────────────────────────
+//  Toast 
 
 function showToast(message, type = 'success') {
   let toast = document.getElementById('toast');
@@ -89,7 +89,7 @@ function showToast(message, type = 'success') {
   toast._t = setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
-// ── Nav Auth UI (shared across pages) ────────────────────────
+//  Navigation
 
 function updateNavAuth() {
   const user       = getUser();
@@ -123,7 +123,7 @@ function initials(str = '') {
 }
 
 
-//  PAGE: LOGIN
+//  Login page
 
 function initLoginPage() {
   const form       = document.getElementById('login-form');
@@ -179,7 +179,7 @@ function initLoginPage() {
   });
 }
 
-//  PAGE: SIGN UP
+//  Sign up page
 function initSignupPage() {
   const form          = document.getElementById('signup-form');
   const nameInput     = document.getElementById('name');
@@ -235,7 +235,7 @@ function initSignupPage() {
   });
 }
 
-//  PAGE: INDEX (recipe search + grid)
+//  Index page
 
 function initIndexPage() {
   const ingredientInput  = document.getElementById('ingredient-input');
@@ -260,26 +260,23 @@ function initIndexPage() {
   let allRecipes          = [];
   let savedIds            = [];
 
-  // Load ingredients for autocomplete
   API.get('/ingredients').then(data => {
     allIngredients = data;
   }).catch(() => {});
 
-  // Load saved recipe IDs if logged in
   async function loadSavedIds() {
     if (!isLoggedIn()) { savedIds = []; return; }
     try { savedIds = await API.get('/saved/ids'); }
     catch { savedIds = []; }
   }
 
-  // Initial load
   (async () => {
     await loadSavedIds();
     allRecipes = await API.get('/recipes').catch(() => []);
     renderCards(allRecipes);
   })();
 
-  // ── Autocomplete ───────────────────────────────────────────
+  //  Autocomplete 
   if (ingredientInput) {
     ingredientInput.addEventListener('input', () => {
       const val = ingredientInput.value.trim().toLowerCase();
@@ -352,14 +349,14 @@ function initIndexPage() {
     });
   }
 
-  // ── Quick tags ──────────────────────────────────────────────
+  //  Quick tags 
   quickTags.forEach(tag => {
     tag.addEventListener('click', () => {
       addIngredient(tag.textContent.replace(/[^\w\s]/g, '').trim());
     });
   });
 
-  // ── Filters ────────────────────────────────────────────────
+  //  Filters 
   filterChips.forEach(chip => {
     chip.addEventListener('click', () => {
       const val = chip.dataset.filter || chip.textContent.trim().toLowerCase();
@@ -369,7 +366,7 @@ function initIndexPage() {
     });
   });
 
-  // ── Find button ────────────────────────────────────────────
+  //  Find button 
   if (btnFind) {
     btnFind.addEventListener('click', async () => {
       const data = await API.post('/recipes/search', {
@@ -379,7 +376,6 @@ function initIndexPage() {
 
       let results = data;
 
-      // Client-side sort if select present
       if (sortSelect) {
         const sort = sortSelect.value;
         if (sort === 'time')       results.sort((a, b) => a.time_mins - b.time_mins);
@@ -398,12 +394,12 @@ function initIndexPage() {
     });
   }
 
-  // ── Sort ───────────────────────────────────────────────────
+  //  Sort 
   if (sortSelect) {
     sortSelect.addEventListener('change', () => btnFind?.click());
   }
 
-  // ── Render recipe grid ──────────────────────────────────────
+  //  Render recipe grid 
   function renderCards(recipes) {
     if (!recipeGrid) return;
 
@@ -507,13 +503,13 @@ function initIndexPage() {
 }
 
 
-//  PAGE: RECIPE DETAIL
+//  Recipe page
 
 function initRecipePage() {
   const params   = new URLSearchParams(window.location.search);
   const recipeId = parseInt(params.get('id'));
 
-  if (!document.getElementById('hero-title')) return; // not recipe page
+  if (!document.getElementById('hero-title')) return;
   if (isNaN(recipeId)) {
     showNotFound(); return;
   }
@@ -585,7 +581,7 @@ function initRecipePage() {
       });
     }
 
-    // ── Ingredients + Servings scaler ─────────────────────────
+    //  Ingredients
     let currentServings = recipe.servings;
     const baseServings  = recipe.servings;
 
@@ -645,7 +641,7 @@ function initRecipePage() {
       });
     }
 
-    // ── Nutrition (calculate from ingredient data) ────────────
+    //  Nutrition
   function renderNutrition() {
   const nutritionValues = document.querySelectorAll('.nutrition-value');
   if (!nutritionValues.length) return;
@@ -688,7 +684,7 @@ function initRecipePage() {
 }
 
 
-    // ── Save button ───────────────────────────────────────────
+    //  Save button 
     const btnSave = document.getElementById('btn-save-recipe');
     let isSaved = false;
 
@@ -731,7 +727,7 @@ function initRecipePage() {
       });
     }
 
-    // ── Share button ──────────────────────────────────────────
+    //  Share button 
     const btnShare = document.getElementById('btn-share-recipe');
     if (btnShare) {
       btnShare.addEventListener('click', () => {
@@ -747,7 +743,7 @@ function initRecipePage() {
   }
 }
 
-//  PAGE: ACCOUNT
+//  Account page
 
 function initAccountPage() {
   if (!document.getElementById('panel-profile')) return;
@@ -761,7 +757,6 @@ function initAccountPage() {
   const user = getUser();
   updateNavAuth();
 
-  // Populate header
   const avatarEls    = document.querySelectorAll('.user-avatar, .account-avatar-large');
   const nameEls      = document.querySelectorAll('.user-name-display, .account-header-name');
   const emailEl      = document.getElementById('account-header-email');
@@ -771,7 +766,7 @@ function initAccountPage() {
   nameEls.forEach(el   => el.textContent = user.name || user.email.split('@')[0]);
   if (emailEl) emailEl.textContent = user.email;
 
-  // ── Tab navigation ─────────────────────────────────────────
+  //  Tab navigation 
   const navItems = document.querySelectorAll('.account-nav-item');
   const panels   = document.querySelectorAll('.account-panel');
 
@@ -790,7 +785,7 @@ function initAccountPage() {
   const hashPanel = window.location.hash.replace('#', '') || 'profile';
   showPanel(hashPanel);
 
-  // ── Profile form ───────────────────────────────────────────
+  //  Profile form 
   const profileForm = document.getElementById('profile-form');
   const nameInput   = document.getElementById('profile-name');
   const emailInput  = document.getElementById('profile-email');
@@ -817,7 +812,7 @@ function initAccountPage() {
     });
   }
 
-  // ── Password form ──────────────────────────────────────────
+  //  Password form 
   const passwordForm     = document.getElementById('password-form');
   const currentPassInput = document.getElementById('current-password');
   const newPassInput     = document.getElementById('new-password');
@@ -846,7 +841,7 @@ function initAccountPage() {
     });
   }
 
-  // ── Saved Recipes ──────────────────────────────────────────
+  //  Saved Recipes 
   async function renderSavedRecipes() {
     const container = document.getElementById('saved-recipes-container');
     if (!container) return;
@@ -902,7 +897,7 @@ function initAccountPage() {
     }
   }
 
-  // ── Delete Account ─────────────────────────────────────────
+  //  Delete Account 
   const btnDelete = document.getElementById('btn-delete-account');
   if (btnDelete) {
     btnDelete.addEventListener('click', async () => {
@@ -918,7 +913,6 @@ function initAccountPage() {
   }
 }
 
-//  SHARED FORM HELPERS
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -938,7 +932,7 @@ function clearFormErrors() {
   });
 }
 
-//  BOOT — detect current page and initialise
+// detect current page
 
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.body.dataset.page;
@@ -949,7 +943,6 @@ document.addEventListener('DOMContentLoaded', () => {
   else if (page === 'recipe')  initRecipePage();
   else if (page === 'index')   initIndexPage();
   else {
-    // fallback: run all inits, each checks for its key DOM element
     updateNavAuth();
     initLoginPage();
     initSignupPage();
