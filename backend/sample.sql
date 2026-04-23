@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS recipe CASCADE;
 DROP TABLE IF EXISTS ingredient CASCADE;
 DROP TABLE IF EXISTS account CASCADE;
 
--- ── Ingredients ──────────────────────────────────────────────
+--  Ingredients 
 CREATE TABLE ingredient (
   id            SERIAL PRIMARY KEY NOT NULL,
   name          TEXT    NOT NULL UNIQUE,
@@ -19,7 +19,7 @@ CREATE TABLE ingredient (
   ratio         NUMERIC NOT NULL  -- multiply per-100g values by this to get per-serving
 );
 
--- ── Recipes ──────────────────────────────────────────────────
+--  Recipes 
 CREATE TABLE recipe (
   id          SERIAL  PRIMARY KEY NOT NULL,
   name        TEXT    NOT NULL UNIQUE,
@@ -27,14 +27,14 @@ CREATE TABLE recipe (
   image       TEXT    NOT NULL DEFAULT '',
   time_mins   INTEGER NOT NULL DEFAULT 30,
   servings    INTEGER NOT NULL DEFAULT 4,
-  difficulty  TEXT    NOT NULL DEFAULT 'Easy',  -- Easy | Medium | Hard
-  dietary     TEXT[]  NOT NULL DEFAULT '{}',    -- e.g. {vegetarian,vegan}
-  tags        TEXT[]  NOT NULL DEFAULT '{}',    -- e.g. {pasta,italian}
+  difficulty  TEXT    NOT NULL DEFAULT 'Easy', 
+  dietary     TEXT[]  NOT NULL DEFAULT '{}',   
+  tags        TEXT[]  NOT NULL DEFAULT '{}',   
   notes       TEXT    NOT NULL DEFAULT '',
   steps       TEXT[]  NOT NULL DEFAULT '{}'
 );
 
--- ── Recipe ↔ Ingredient join ─────────────────────────────────
+--  Recipe Ingredients
 CREATE TABLE recipe_ingredient (
   recipe_id     INT REFERENCES recipe(id)     ON DELETE CASCADE,
   ingredient_id INT REFERENCES ingredient(id) ON DELETE CASCADE,
@@ -43,7 +43,7 @@ CREATE TABLE recipe_ingredient (
   PRIMARY KEY (recipe_id, ingredient_id)
 );
 
--- ── Accounts ─────────────────────────────────────────────────
+--  Accounts 
 CREATE TABLE account (
   id         SERIAL PRIMARY KEY NOT NULL,
   username   TEXT   NOT NULL,
@@ -52,14 +52,14 @@ CREATE TABLE account (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ── Sessions ─────────────────────────────────────────────────
+--  Sessions 
 CREATE TABLE session (
   token      TEXT PRIMARY KEY,
   account_id INT  REFERENCES account(id) ON DELETE CASCADE,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ── Saved Recipes ────────────────────────────────────────────
+--  Saved Recipes 
 CREATE TABLE account_saved_recipe (
   recipe_id  INT REFERENCES recipe(id)  ON DELETE CASCADE,
   account_id INT REFERENCES account(id) ON DELETE CASCADE,

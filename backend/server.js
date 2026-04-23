@@ -14,15 +14,12 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 
-// ── Helpers ───────────────────────────────────────────────────
+// Helpers 
 
-/** Generate a secure random session token */
 function makeToken() {
   return crypto.randomBytes(32).toString('hex');
 }
 
-/** Middleware: require a valid session token in the Authorization header.
- *  Sets req.accountId on success. */
 async function requireAuth(req, res, next) {
   const header = req.headers['authorization'] || '';
   const token  = header.replace('Bearer ', '').trim();
@@ -42,9 +39,9 @@ async function requireAuth(req, res, next) {
   }
 }
 
-//  AUTH ROUTES
+// AUTHENTICATION ROUTES
 
-// ── POST /api/auth/signup ─────────────────────────────────────
+// POST /api/auth/signup — create new account
 app.post('/api/auth/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -88,7 +85,7 @@ app.post('/api/auth/signup', async (req, res) => {
 });
 
 
-// ── POST /api/auth/login ──────────────────────────────────────
+//  POST /api/auth/login — authenticate
 app.post('/api/auth/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -127,7 +124,7 @@ app.post('/api/auth/login', async (req, res) => {
 });
 
 
-// ── POST /api/auth/logout ─────────────────────────────────────
+//  POST /api/auth/logout — invalidate session token
 app.post('/api/auth/logout', requireAuth, async (req, res) => {
   const token = (req.headers['authorization'] || '').replace('Bearer ', '').trim();
   try {
@@ -140,7 +137,7 @@ app.post('/api/auth/logout', requireAuth, async (req, res) => {
 });
 
 
-// ── GET /api/auth/me ──────────────────────────────────────────
+//  GET /api/auth/me — get current user info based on session token
 app.get('/api/auth/me', requireAuth, async (req, res) => {
   try {
     const result = await pool.query(
@@ -158,7 +155,7 @@ app.get('/api/auth/me', requireAuth, async (req, res) => {
 });
 
 
-// ── PUT /api/auth/profile — update display name ───────────────
+//  PUT /api/auth/profile — update display name 
 app.put('/api/auth/profile', requireAuth, async (req, res) => {
   const { name } = req.body;
   if (!name || !name.trim())
@@ -178,7 +175,7 @@ app.put('/api/auth/profile', requireAuth, async (req, res) => {
 });
 
 
-// ── PUT /api/auth/password — change password ──────────────────
+//  PUT /api/auth/password — change password 
 app.put('/api/auth/password', requireAuth, async (req, res) => {
   const { currentPassword, newPassword } = req.body;
 
@@ -212,7 +209,7 @@ app.put('/api/auth/password', requireAuth, async (req, res) => {
 });
 
 
-// ── DELETE /api/auth/account — delete account ─────────────────
+//  DELETE /api/auth/account — delete account 
 app.delete('/api/auth/account', requireAuth, async (req, res) => {
   try {
     // Cascade will clean up sessions and saved recipes via FK constraints
@@ -226,7 +223,7 @@ app.delete('/api/auth/account', requireAuth, async (req, res) => {
 
 //  INGREDIENT ROUTES
 
-// ── GET /api/ingredients ──────────────────────────────────────
+//  GET /api/ingredients — get all ingredients
 app.get('/api/ingredients', async (req, res) => {
   try {
     const result = await pool.query('SELECT name FROM ingredient ORDER BY name ASC');
@@ -239,7 +236,7 @@ app.get('/api/ingredients', async (req, res) => {
 
 //  RECIPE ROUTES
 
-/** Helper: fetch full recipe rows with their ingredients as JSON */
+// Helper: fetch full recipe rows with their ingredients as JSON
 async function fetchRecipes(whereClause = '', params = []) {
   const sql = `
     SELECT
@@ -298,7 +295,7 @@ async function fetchRecipes(whereClause = '', params = []) {
 }
 
 
-// ── GET /api/recipes — all recipes ───────────────────────────
+//  GET /api/recipes — all recipes 
 app.get('/api/recipes', async (req, res) => {
   try {
     const recipes = await fetchRecipes();
@@ -310,7 +307,7 @@ app.get('/api/recipes', async (req, res) => {
 });
 
 
-// ── GET /api/recipes/:id — single recipe ─────────────────────
+//  GET /api/recipes/:id — single recipe 
 app.get('/api/recipes/:id', async (req, res) => {
   const id = parseInt(req.params.id);
   if (isNaN(id)) return res.status(400).json({ error: 'Invalid recipe ID' });
@@ -326,7 +323,7 @@ app.get('/api/recipes/:id', async (req, res) => {
 });
 
 
-// ── POST /api/recipes/search — filter by ingredients & dietary
+//  POST /api/recipes/search — filter by ingredients & dietary
 app.post('/api/recipes/search', async (req, res) => {
   try {
     const { ingredients = [], dietary = [] } = req.body;
@@ -369,14 +366,14 @@ app.post('/api/recipes/search', async (req, res) => {
 
 //  SAVED RECIPES 
 
-// ── GET /api/saved — get all saved recipes for current user ───
+//  GET /api/saved — get all saved recipes for current user 
 app.get('/api/saved', requireAuth, async (req, res) => {
   try {
     const result = await pool.query(
       'SELECT recipe_id FROM account_saved_recipe WHERE account_id = $1',
       [req.accountId]
     );
-    // Return the full recipe objects for each saved id
+    // Return the full recipe
     const ids = result.rows.map(r => r.recipe_id);
     if (ids.length === 0) return res.json([]);
 
@@ -392,7 +389,7 @@ app.get('/api/saved', requireAuth, async (req, res) => {
 });
 
 
-// ── GET /api/saved/ids — just the IDs (for checking saved state)
+//  GET /api/saved/ids — just the IDs
 app.get('/api/saved/ids', requireAuth, async (req, res) => {
   try {
     const result = await pool.query(
@@ -407,7 +404,7 @@ app.get('/api/saved/ids', requireAuth, async (req, res) => {
 });
 
 
-// ── POST /api/saved/:id — save a recipe ──────────────────────
+//  POST /api/saved/:id — save a recipe 
 app.post('/api/saved/:id', requireAuth, async (req, res) => {
   const recipeId = parseInt(req.params.id);
   if (isNaN(recipeId)) return res.status(400).json({ error: 'Invalid recipe ID' });
@@ -427,7 +424,7 @@ app.post('/api/saved/:id', requireAuth, async (req, res) => {
 });
 
 
-// ── DELETE /api/saved/:id — unsave a recipe ───────────────────
+//  DELETE /api/saved/:id — unsave a recipe 
 app.delete('/api/saved/:id', requireAuth, async (req, res) => {
   const recipeId = parseInt(req.params.id);
   if (isNaN(recipeId)) return res.status(400).json({ error: 'Invalid recipe ID' });
@@ -445,20 +442,17 @@ app.delete('/api/saved/:id', requireAuth, async (req, res) => {
 });
 
 
-// ═══════════════════════════════════════════════════════════════
 //  DATABASE SETUP ROUTE
+
 //  GET /api/setup — run schema + import seed data
-// ═══════════════════════════════════════════════════════════════
 app.get('/api/setup', async (req, res) => {
   const fs   = require('fs');
   const fsp  = require('fs').promises;
 
   try {
-    // 1. Run the schema SQL
     const sample = fs.readFileSync(path.join(__dirname, 'sample.sql'), 'utf8');
     await pool.query(sample);
 
-    // 2. Seed ingredients
     const ingredients = JSON.parse(
       await fsp.readFile(path.join(__dirname, 'ingredient.json'), 'utf8')
     );
@@ -471,7 +465,6 @@ app.get('/api/setup', async (req, res) => {
       );
     }
 
-    // 3. Seed recipes + their ingredient links
     const recipes = JSON.parse(
       await fsp.readFile(path.join(__dirname, 'recipe.json'), 'utf8')
     );

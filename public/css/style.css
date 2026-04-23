@@ -283,6 +283,7 @@ footer {
   color: rgba(200, 221, 200, .5)
 }
 
+/* Toast */
 .toast {
   position: fixed;
   bottom: 2rem;
@@ -589,6 +590,7 @@ footer {
   }
 }
 
+/* tag remove */
 .tag-remove {
   background: rgba(250, 246, 239, .2);
   border: none;
@@ -1483,6 +1485,7 @@ footer {
   color: #c4622d
 }
 
+/* Nutrition section */
 .nutrition-section {
   background: white;
   border-radius: 16px;
@@ -1527,6 +1530,7 @@ footer {
   line-height: 1.2;
 }
 
+/* Authentication pages */
 .auth-page {
   min-height: 100vh;
   display: flex;
