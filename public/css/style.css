@@ -498,15 +498,6 @@ footer {
   color: #8a8a7a
 }
 
-.input-search-icon {
-  position: absolute;
-  right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #8a8a7a;
-  pointer-events: none;
-  font-size: 1.1rem
-}
 
 /* auto complete */
 .autocomplete-list {
@@ -1272,10 +1263,6 @@ footer {
   gap: 1rem
 }
 
-.notes-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0
-}
 
 .notes-title {
   font-family: 'Playfair Display', Georgia, serif;
@@ -1539,7 +1526,7 @@ footer {
   padding: 2rem;
   position: relative;
   overflow: hidden;
-  background-image: url('./images/login-bg.jpg');
+  background-image: url('../images/login-bg.jpg');
   background-size: cover;
   background-position: center
 }
@@ -1888,10 +1875,6 @@ footer {
 .account-nav-item.active {
   background: #1a3a2a;
   color: #fff
-}
-
-.account-nav-icon {
-  font-size: 1rem
 }
 
 .account-nav-divider {

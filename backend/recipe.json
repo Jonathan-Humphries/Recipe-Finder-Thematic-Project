@@ -2,7 +2,7 @@
   {
     "name": "Spaghetti Aglio e Olio",
     "description": "A classic Italian pasta dish made with garlic, olive oil, and chilli flakes — simple, bold, and endlessly satisfying. Proof that the best meals need only a handful of great ingredients.",
-    "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&q=80",
+    "image": "/images/recipe_1.jpg",
     "time_mins": 20,
     "servings": 2,
     "difficulty": "Easy",
@@ -28,7 +28,7 @@
   {
     "name": "Shakshuka",
     "description": "Eggs poached in a rich, spiced tomato and pepper sauce. A one-pan wonder perfect for breakfast, lunch, or dinner.",
-    "image": "https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=800&q=80",
+    "image": "/images/recipe_2.jpg",
     "time_mins": 25,
     "servings": 2,
     "difficulty": "Easy",
@@ -54,7 +54,7 @@
   {
     "name": "Chickpea Curry",
     "description": "A hearty and fragrant chickpea curry with warming spices and creamy coconut milk. Ready in under 30 minutes and completely vegan.",
-    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80",
+    "image": "/images/recipe_3.jpg",
     "time_mins": 30,
     "servings": 4,
     "difficulty": "Easy",
@@ -81,7 +81,7 @@
   {
     "name": "Honey Garlic Noodles",
     "description": "Silky noodles tossed in a sticky, sweet-savoury honey garlic sauce. On the table in 15 minutes — dangerously addictive.",
-    "image": "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=800&q=80",
+    "image": "/images/recipe_4.jpg",
     "time_mins": 15,
     "servings": 2,
     "difficulty": "Easy",
@@ -105,7 +105,7 @@
   {
     "name": "Avocado Toast with Poached Eggs",
     "description": "A café classic done properly — silky poached eggs on crushed avocado toast with chilli and lemon.",
-    "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&q=80",
+    "image": "/images/recipe_5.jpg",
     "time_mins": 15,
     "servings": 2,
     "difficulty": "Easy",

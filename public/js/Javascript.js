@@ -467,15 +467,12 @@ function initIndexPage() {
     const catTags = (recipe.tags || []).slice(0, 2).map(t =>
       `<span class="card-tag">${t}</span>`).join('');
 
-    const badgeText = selectedIngredients.length > 0
-      ? (score >= 80 ? '✦ Great match' : score >= 50 ? 'Partial match' : 'Low match')
-      : recipe.difficulty;
+    const badgeText = recipe.difficulty;
 
     return `
       <article class="recipe-card">
         <div class="card-image-wrap">
           <img src="${recipe.image}" alt="${recipe.title}" loading="lazy">
-          <span class="card-badge">${badgeText}</span>
           <button class="btn-save-card" data-id="${recipe.id}">${saved ? '❤️' : '🤍'}</button>
         </div>
         <div class="card-body">
@@ -489,13 +486,7 @@ function initIndexPage() {
           <div class="card-tags">${catTags}${dietaryTags}</div>
         </div>
         <div class="card-footer">
-          ${selectedIngredients.length > 0 ? `
-            <div class="card-match-bar-wrap">
-              <div class="card-match-label">${scoreLabel}</div>
-              <div class="card-match-bar">
-                <div class="card-match-fill" style="width:${score}%"></div>
-              </div>
-            </div>` : '<span></span>'}
+         <span></span>
           <button class="btn-view-recipe" data-id="${recipe.id}">View →</button>
         </div>
       </article>`;
@@ -855,7 +846,7 @@ function initAccountPage() {
       if (savedRecipes.length === 0) {
         container.innerHTML = `
           <div class="saved-empty">
-            <div class="saved-empty-icon">🥗</div>
+            <div class="saved-empty-icon"></div>
             <h3 class="saved-empty-title">No saved recipes yet</h3>
             <p class="saved-empty-text">Find recipes you love and save them here for quick access.</p>
             <a href="index.html" class="btn-explore">Explore recipes →</a>
@@ -874,8 +865,8 @@ function initAccountPage() {
               <div class="saved-card-body">
                 <h4 class="saved-card-title">${recipe.title}</h4>
                 <div class="saved-card-meta">
-                  <span>⏱ ${recipe.time}</span>
-                  <span>👤 Serves ${recipe.servings}</span>
+                  <span> ${recipe.time}</span>
+                  <span>Serves ${recipe.servings}</span>
                 </div>
                 <a href="recipe.html?id=${recipe.id}" class="btn-view-saved">View recipe →</a>
               </div>
